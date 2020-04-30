@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./style.css";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Icon } from "antd";
+import {Route, Switch} from 'react-router-dom';
+import pageRoutes from "../../../config/router/index"
+
 import {
   AppstoreOutlined,
   BarChartOutlined,
@@ -14,12 +17,15 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 
+
 const { Header, Content, Footer, Sider } = Layout;
 
 class Dashboard extends Component {
   state = {
     collapsed: false,
   };
+
+  nav 
 
   onCollapse = () => {
     this.setState({
@@ -43,38 +49,15 @@ class Dashboard extends Component {
         >
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
-            <Menu.Item key="1">
-              <UserOutlined />
-              <span className="nav-text">nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <VideoCameraOutlined />
-              <span className="nav-text">nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <UploadOutlined />
-              <span className="nav-text">nav 3</span>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <BarChartOutlined />
-              <span className="nav-text">nav 4</span>
-            </Menu.Item>
-            <Menu.Item key="5">
-              <CloudOutlined />
-              <span className="nav-text">nav 5</span>
-            </Menu.Item>
-            <Menu.Item key="6">
-              <AppstoreOutlined />
-              <span className="nav-text">nav 6</span>
-            </Menu.Item>
-            <Menu.Item key="7">
-              <TeamOutlined />
-              <span className="nav-text">nav 7</span>
-            </Menu.Item>
-            <Menu.Item key="8">
-              <ShopOutlined />
-              <span className="nav-text">nav 8</span>
-            </Menu.Item>
+          {pageRoutes.map((data, i) => {
+            return(
+              <Menu.Item key={i} icon={data.icon}>
+              {data.name}
+              </Menu.Item>
+            )
+          })
+          }
+            
           </Menu>
         </Sider>
         <Layout className="site-layout" style={{ marginLeft: 200 }}>
@@ -84,101 +67,12 @@ class Dashboard extends Component {
               className="site-layout-background"
               style={{ padding: 24, textAlign: "center" }}
             >
-              ...
-              <br />
-              Really
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              long
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              ...
-              <br />
-              content
+          <Switch>
+            <Route exact path="/" component={() => <h1>Ini Route</h1>}  />
+            <Route path="/about" component={() => <h1>Ini Halaman About</h1>} exact />
+            <Route path="/contact" component={() => <h1>Ini Halaman Kontak</h1>} exact />
+          </Switch>
+              
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
